@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'IndiEase — Discover India. Travel easy.',
+  title: 'IndiaEase — Discover India. Travel easy.',
   description: 'A thoughtful travel companion for discovering India, planning journeys, and finding local experiences.',
   generator: 'v0.app',
   icons: {

@@ -11,9 +11,9 @@ import {
 } from 'lucide-react'
 
 const destinations = [
-  { name: 'Munnar', place: 'Kerala, India', tag: 'Nature escape', image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=900&q=85', rating: '4.9', color: 'from-emerald-950/80' },
-  { name: 'Jaipur', place: 'Rajasthan, India', tag: 'Royal trails', image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=85', rating: '4.8', color: 'from-rose-950/80' },
-  { name: 'Varanasi', place: 'Uttar Pradesh, India', tag: 'Soulful mornings', image: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=900&q=85', rating: '4.7', color: 'from-amber-950/80' },
+  { name: 'Munnar', place: 'Kerala, India', tag: 'Nature escape', categories: ['Nature', 'Adventure', 'Food trails'], image: 'https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=900&q=85', rating: '4.9', color: 'from-emerald-950/80' },
+  { name: 'Jaipur', place: 'Rajasthan, India', tag: 'Royal trails', categories: ['Heritage', 'Food trails', 'Adventure'], image: 'https://images.unsplash.com/photo-1477587458883-47145ed94245?auto=format&fit=crop&w=900&q=85', rating: '4.8', color: 'from-rose-950/80' },
+  { name: 'Varanasi', place: 'Uttar Pradesh, India', tag: 'Soulful mornings', categories: ['Spiritual', 'Heritage', 'Food trails'], image: 'https://images.unsplash.com/photo-1561361058-c24cecae35ca?auto=format&fit=crop&w=900&q=85', rating: '4.7', color: 'from-amber-950/80' },
 ]
 
 const categories = [
@@ -101,7 +101,7 @@ export default function Page() {
   const [role, setRole] = useState('Tourist')
   const [language, setLanguage] = useState('EN')
   const [activeCategory, setActiveCategory] = useState('All')
-  const visibleDestinations = useMemo(() => activeCategory === 'All' ? destinations : destinations.filter((destination) => destination.tag.toLowerCase().includes(activeCategory.toLowerCase().split(' ')[0])), [activeCategory])
+  const visibleDestinations = useMemo(() => activeCategory === 'All' ? destinations : destinations.filter((destination) => destination.categories.includes(activeCategory)), [activeCategory])
   const matchedState = useMemo(() => states.find((state) => state.name.toLowerCase() === query.trim().toLowerCase() || state.name.toLowerCase().includes(query.trim().toLowerCase()) || query.trim().toLowerCase().includes(state.name.toLowerCase())), [query])
   const searchState = () => {
     if (matchedState) {
